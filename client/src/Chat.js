@@ -24,6 +24,8 @@ function Chat({socket, username , room}) {
 
     socket.on("receive_message", (data) => {
       console.log(`message ${data.message}`)
+      const rootElement = document.getElementById("root");
+
     })
 
   },[socket])
@@ -36,7 +38,7 @@ function Chat({socket, username , room}) {
         <div className='chat-header'>
             <p>Live chat</p>
         </div>
-        <div className='chat-body'></div>
+        <div id="messages" className='chat-body'> </div>
         <div className='chat-footer'>
             <input type="text" placeholder='...' onChange={(event) => {setCurrentMessage(event.target.value)}}/>
             <button onClick={sendMessage}>&#9658;</button>
