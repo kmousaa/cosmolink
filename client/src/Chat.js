@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  
 
   const messageContainerRef = useRef(null);
 
@@ -15,9 +16,21 @@ function Chat({ socket, username, room }) {
         time: new Date(Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       socket.emit('send_message', messageData);
+      setMessageList((list) => [...list, messageData]);
       setCurrentMessage('');
     }
   };
+
+  // Handels sending message when enter clicked
+  const handelKeydown = (e) => {
+    if (e.key == "Enter"){
+      sendMessage()
+    }
+  }
+
+
+
+
 
   useEffect(() => {
     // Function to handle receiving messages
@@ -55,7 +68,7 @@ function Chat({ socket, username, room }) {
             {/* Message content */}
             <p className="bg-blue-100 rounded-lg px-3 py-2">{messageContent.message}</p>
             {/* Message timestamp */}
-            <span className="text-xs text-gray-500">{messageContent.time}</span>
+            <span className="text-xs text-gray-100">{messageContent.time}</span>
           </div>
         ))}
       </div>
@@ -71,6 +84,7 @@ function Chat({ socket, username, room }) {
             placeholder="Type your message..."
             value={currentMessage}
             onChange={(event) => setCurrentMessage(event.target.value)}
+            onKeyPress={handelKeydown}
           />
           {/* Send button */}
           <button
