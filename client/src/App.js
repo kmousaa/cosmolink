@@ -1,8 +1,10 @@
+import React from 'react';
 import './App.css';
 import io from 'socket.io-client';
 import Chat from "./Chat";
 import { useState } from "react";
 import 'tailwindcss/tailwind.css';
+
 
 // create socket.io server (frontend -> backend)
 const socket = io.connect("http://localhost:3001");
@@ -19,16 +21,16 @@ function App() {
   };
 
   return (
-
     <>
 
-
-
+ 
 
     <div className="flex flex-col h-screen bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    
+
       {/* Menubar */}
       <div className="bg-white py-4 px-8 flex items-center justify-between">
-        <div className="text-violet-500 text-2xl font-bold ">Cosmolink</div>
+        <div className="text-violet-500 text-2xl font-bold">Cosmolink</div>
       </div>
 
       {/* Title */}
@@ -43,12 +45,7 @@ function App() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
       </div>
@@ -90,7 +87,6 @@ function App() {
 
       {/* <Chat socket={socket} username={username} room={room} /> */}
     </div>
-
     </>
   );
 }
