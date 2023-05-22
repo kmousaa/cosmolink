@@ -2,8 +2,6 @@
 
 Cosmolink is a real-time messaging application similar to Discord. It allows users to send live messages, images, videos, and audios using sockets. Users can join rooms by entering their name and a room ID, enabling group conversations with other users in the same room.
 
-![](https://github.com/kmousaa/Cosmolink/blob/main/demo.gif)
-
 # Features
 
 - Real-time messaging: Communicate with other users instantly using live messages.
@@ -38,3 +36,5 @@ Media file size limitation: Currently, Cosmolink supports media files (images, p
 
 ___
 That's it! You can now enjoy real-time messaging and collaboration with Cosmolink.
+
+![](https://github.com/kmousaa/Cosmolink/blob/main/demo.gif)
