@@ -4,7 +4,6 @@ Cosmolink is a real-time messaging application similar to Discord. It allows use
 
 ![](https://github.com/kmousaa/Cosmolink/blob/main/demo.gif)
 
-
 # Features
 
 - Real-time messaging: Communicate with other users instantly using live messages.
