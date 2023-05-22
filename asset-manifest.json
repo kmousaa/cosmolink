@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Cosmolink/static/css/main.37a0cd83.css",
+    "main.js": "/Cosmolink/static/js/main.57a21c20.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/Cosmolink/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/Cosmolink/index.html",
+    "main.37a0cd83.css.map": "/Cosmolink/static/css/main.37a0cd83.css.map",
+    "main.57a21c20.js.map": "/Cosmolink/static/js/main.57a21c20.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/Cosmolink/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37a0cd83.css",
+    "static/js/main.57a21c20.js"
+  ]
+}
