@@ -35,6 +35,4 @@ Note: Make sure you have Node.js and npm installed on your machine before runnin
 Media file size limitation: Currently, Cosmolink supports media files (images, photos, and videos) up to 1MB in size.
 
 ___
-That's it! You can now enjoy real-time messaging and collaboration with Cosmolink.
-
 ![](https://github.com/kmousaa/Cosmolink/blob/main/demo.gif)
