@@ -12,6 +12,7 @@ app.use(cors());
 // stores {username, socket id, room}
 const users = [];
 
+
 // Create an HTTP server for the React app (localhost)
 const server = http.createServer(app);
 
@@ -26,20 +27,21 @@ const io = new Server(server, {
 
 // Listen to the "connection" event
 io.on("connect", (socket) => {
-  console.log("User Connected", socket.id);
+
+  // console.log("User Connected", socket.id);
 
   socket.on("join_room", (data) => {
     // Check if the username is already taken
     const existingUser = users.find(user => user.username === data.username);
     if (existingUser) {
-      console.log("USERNAME TAKEN ALREADY");
+     
       socket.emit("joined_room", "error");
 
     } else {
       users.push({ username: data.username, socketId: socket.id, room: data.room });
       socket.join(data.room);
       socket.emit("joined_room", "joined");
-      console.log(`User with ID: ${socket.id} joined room ${data.room}`);
+      
     }
   });
 
@@ -47,9 +49,19 @@ io.on("connect", (socket) => {
     socket.to(data.room).emit("receive_message", data);
   });
 
+
+
+  socket.on("start_user_typing", (data) => {
+    socket.to(data.room).emit("start_typing", data);
+  });
+
+  socket.on("stop_user_typing", (data) => {
+    socket.to(data.room).emit("end_typing", data);
+  });
+
   // Handle "disconnect" event when a user disconnects
   socket.on("disconnect", () => {
-    console.log("User Disconnected", socket.id);
+   
     // Remove the disconnected user from the user list
     const index = users.findIndex(user => user.socketId === socket.id);
     if (index !== -1) {
