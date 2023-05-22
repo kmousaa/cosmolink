@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-function Image(props) {
+function Image({ blob, fileName }) {
   const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     const reader = new FileReader();
-    reader.readAsDataURL(props.blob);
-    reader.onloadend = function () {
+    reader.onload = () => {
       setImageSrc(reader.result);
     };
-  }, [props.blob]);
+    reader.readAsDataURL(blob);
+  }, [blob]);
 
-  return <img style={{ width: 150, height: 'auto' }} src={imageSrc} alt={props.fileName} />;
+  return <img style={{ width: 300, height: 'auto' }} src={imageSrc} alt={fileName} />;
+  
 }
 
 export default Image;
+
