@@ -16,14 +16,32 @@ function App() {
   // establish connection between current logged in user and room
   const joinRoom = () => {
     if (username !== '' && room !== '') {
-      socket.emit('join_room', room);
+      
+      const data = {
+        username: username,
+        room : room
+      }
+
+      socket.emit('join_room', data);
     }
   };
 
+  const goBack = () => {
+    window.location.reload(false);
+  }
+
   useEffect(() => {
     socket.on('joined_room', (data) => {
-      console.log(`message room has been joined`);
-      setShowChat(true);
+
+      if (data == "joined"){
+        console.log(`message room has been joined`);
+        setShowChat(true);
+      }
+      else if (data == "error"){
+        console.log(`ERROR`);
+         
+      }
+ 
     });
   }, [socket]);
 
@@ -32,7 +50,7 @@ function App() {
       <div className="flex flex-col h-screen bg-gradient-to-r from-violet-500 to-fuchsia-500">
         {/* Menubar */}
         <div className="bg-white py-4 px-8 flex items-center justify-between">
-          <div className="text-violet-500 text-2xl font-bold">Cosmolink</div>
+          <div className="text-violet-500 text-2xl font-bold" onClick={goBack}>Cosmolink</div>
         </div>
 
         {showChat ? (
