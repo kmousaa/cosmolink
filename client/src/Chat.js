@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Image from './Image';
+import ImageComponent from './Image';
+
 import BeatLoader from "react-spinners/BeatLoader";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
-  const [fileSelected, setFileSelected] = useState(false);
+  const [fileSelected, setFileSelected] = useState("gray");
   const [userTyping, setUserTyping] = useState(false);
   const [currentTyper, setCurrentTyper] = useState("");
   
@@ -31,7 +32,8 @@ function Chat({ socket, username, room }) {
         setMessageList((list) => [...list, fileData]);
         setCurrentMessage('');
         setFile(null);
-        setFileSelected(false);
+        setFileSelected("gray");
+
       };
       reader.readAsArrayBuffer(file);
     } else {
@@ -53,12 +55,15 @@ function Chat({ socket, username, room }) {
   const selectFile = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      setCurrentMessage(selectedFile.name);
-      setFile(selectedFile);
-      setFileSelected(true);
+      if (selectedFile.size > 1024 * 1024) {
+        setFileSelected("red");
+      } else {
+        setCurrentMessage(selectedFile.name);
+        setFile(selectedFile);
+        setFileSelected("green");
+      }
     }
   };
-
 
 
   const handleKeydown = (e) => {
@@ -112,7 +117,9 @@ function Chat({ socket, username, room }) {
       return (
         <div className={`flex flex-col py-1 ${messageContent.author === username ? 'self-end items-end' : 'items-start'}`} key={index}>
           <p className="font-bold">{messageContent.author}</p>
-          <Image fileName={messageContent.fileName} blob={blob} />
+          
+          <ImageComponent fileName={messageContent.fileName} blob={blob} />
+
           <span className="text-xs text-gray-100">{messageContent.time}</span>
         </div>
       );
@@ -154,8 +161,8 @@ function Chat({ socket, username, room }) {
       <div className="p-4 bg-gray-100 grid-cols-3 rounded-full">
         <div className="flex items-center">
           {/* add file */}
-          <label className={`mr-3 px-4 py-2 ${fileSelected ? 'bg-green-300' : 'bg-gray-300'} text-white rounded-full focus:outline-none`}>
-            <div className="font-bold">{fileSelected ? '✓' : '+'}</div>
+          <label className={`mr-3 px-4 py-2 ${fileSelected === 'green' ? 'bg-green-300' : (fileSelected === 'red' ? 'bg-red-300' : 'bg-gray-300')} text-white rounded-full focus:outline-none`}>
+            <div className="font-bold">{fileSelected == 'green' ? '✓' : (fileSelected === 'red' ? '✗' : '+')  }</div>
             <input onChange={selectFile} type="file" className="hidden" />
           </label>
 
