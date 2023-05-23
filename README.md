@@ -34,7 +34,7 @@ Note: Make sure you have Node.js and npm installed on your machine before runnin
 
 # Limitations:
 
-- Media file size limitation: Currently, Cosmolink supports media files (images, photos, and videos) up to 1MB in size.
+- Media file size limitation: Currently, Cosmolink supports media files (images, audio, and videos) up to 1MB in size.
 
 # Enjoy:
 ![](https://github.com/kmousaa/Cosmolink/blob/main/demo.gif)
