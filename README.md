@@ -2,6 +2,7 @@
 
 [![Generic badge](https://img.shields.io/badge/language-javascript-orange.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/completion-complete-green.svg)](https://shields.io/)
+[![GitLab last commit](https://img.shields.io/github/last-commit/kmousaa/Cosmolink)](https://img.shields.io/github/last-commit/kmousaa/Cosmolink)
 
 Cosmolink is a real-time messaging application similar to Discord. It allows users to send live messages, images, videos, and audios using sockets. Users can join rooms by entering their name and a room ID, enabling group conversations with other users in the same room.
 
