@@ -20,11 +20,12 @@ Cosmolink is a real-time messaging application similar to Discord. It allows use
 
 To deploy Cosmolink locally, follow these steps:
 
+First Clone the repository: `git clone https://github.com/kmousaa/Cosmolink.git`
+
 ## Server
-1) Clone the repository: `git clone https://github.com/kmousaa/Cosmolink.git`
-2) Navigate to the server folder: `cd Cosmolink/server`
-3) Install dependencies: `npm install`
-4) Start the server: `npm start`
+1) Navigate to the server folder: `cd Cosmolink/server`
+2) Install dependencies: `npm install`
+3) Start the server: `npm start`
 
 ## Client
 1) Open a new terminal window/tab.
